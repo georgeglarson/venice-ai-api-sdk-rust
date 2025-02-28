@@ -1,0 +1,281 @@
+[package]
+name = "venice-ai-api-sdk-rust"
+version = "0.2.0"
+edition = "2021"
+description = "Rust SDK for the Venice.ai API"
+license = "MIT"
+repository = "https://github.com/venice-ai/venice-ai-api-sdk-rust"
+readme = "README.md"
+keywords = ["venice", "ai", "api", "sdk", "llm"]
+categories = ["api-bindings"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11.20", default-features = false, features = ["json", "stream", "multipart", "rustls-tls"] }
+serde = { version = "1.0.188", features = ["derive"] }
+serde_json = "1.0.107"
+serde_urlencoded = "0.7.1"
+thiserror = "1.0.48"
+futures = "0.3.28"
+tokio = { version = "1.32.0", features = ["full"], optional = true }
+url = "2.4.1"
+bytes = "1.4.0"
+chrono = "0.4.30"
+base64 = "0.13.0"
+async-trait = "0.1.73"
+rand = "0.8.5"
+log = "0.4.20"
+hmac = "0.12.1"
+sha2 = "0.10.7"
+hex = "0.4.3"
+
+[features]
+default = ["tokio"]
+examples = ["tokio"]
+
+# Example categories
+models_examples = ["examples"]
+chat_examples = ["examples"]
+image_examples = ["examples"]
+api_keys_examples = ["examples"]
+common_examples = ["examples"]
+
+[dev-dependencies]
+tokio = { version = "1.32.0", features = ["full", "macros"] }
+dotenv = "0.15.0"
+anyhow = "1.0.75"
+chrono = "0.4.30"
+mockito = "1.2.0"
+
+[[example]]
+name = "unified_client"
+path = "examples/unified_client.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "very_simple_test"
+path = "examples/very_simple_test.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "working_example"
+path = "examples/working_example.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "image_generation_example"
+path = "examples/image_generation_example.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "image_upscale_example"
+path = "examples/image_upscale_example.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "api_keys_example"
+path = "examples/api_keys_example.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "generate_and_upscale_test"
+path = "examples/generate_and_upscale_test.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "debug_image_api"
+path = "examples/debug_image_api.rs"
+required-features = ["examples"]
+
+# Removed test_response_parsing example
+
+[[example]]
+name = "debug_upscale_api"
+path = "examples/debug_upscale_api.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "debug_upscale_multipart"
+path = "examples/debug_upscale_multipart.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "test_models_endpoint"
+path = "examples/test_models_endpoint.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "test_chat_endpoint"
+path = "examples/test_chat_endpoint.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "test_api_keys_endpoint"
+path = "examples/test_api_keys_endpoint.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "dotenv_example"
+path = "examples/dotenv_example.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "debug_headers"
+path = "examples/debug_headers.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "generate_web3_key"
+path = "examples/generate_web3_key.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "model_feature_suffix"
+path = "examples/model_feature_suffix.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "model_traits"
+path = "examples/model_traits.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "model_compatibility"
+path = "examples/model_compatibility.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "simple_test"
+path = "examples/simple_test.rs"
+required-features = ["examples"]
+
+[[example]]
+name = "basic_test"
+path = "examples/basic_test.rs"
+required-features = ["examples"]
+
+# New organized examples - Models API
+[[example]]
+name = "models_list_models"
+path = "examples/models/list_models.rs"
+required-features = ["models_examples"]
+
+[[example]]
+name = "models_model_traits"
+path = "examples/models/model_traits.rs"
+required-features = ["models_examples"]
+
+[[example]]
+name = "models_model_compatibility"
+path = "examples/models/model_compatibility.rs"
+required-features = ["models_examples"]
+
+[[example]]
+name = "models_paginated_models"
+path = "examples/models/paginated_models.rs"
+required-features = ["models_examples"]
+
+# New organized examples - Chat API
+[[example]]
+name = "chat_chat_completion"
+path = "examples/chat/chat_completion.rs"
+required-features = ["chat_examples"]
+
+[[example]]
+name = "chat_streaming_chat_completion"
+path = "examples/chat/streaming_chat_completion.rs"
+required-features = ["chat_examples"]
+
+[[example]]
+name = "chat_builder_streaming"
+path = "examples/chat/builder_streaming.rs"
+required-features = ["chat_examples"]
+
+[[example]]
+name = "chat_advanced_streaming"
+path = "examples/chat/advanced_streaming.rs"
+required-features = ["chat_examples"]
+
+[[example]]
+name = "chat_model_feature_suffix"
+path = "examples/chat/model_feature_suffix.rs"
+required-features = ["chat_examples"]
+
+# New organized examples - Image API
+[[example]]
+name = "image_generate_image"
+path = "examples/image/generate_image.rs"
+required-features = ["image_examples"]
+
+[[example]]
+name = "image_upscale_image"
+path = "examples/image/upscale_image.rs"
+required-features = ["image_examples"]
+
+[[example]]
+name = "image_list_styles"
+path = "examples/image/list_styles.rs"
+required-features = ["image_examples"]
+
+[[example]]
+name = "image_response_parsing"
+path = "examples/image/response_parsing.rs"
+required-features = ["image_examples"]
+
+# New organized examples - API Keys API
+[[example]]
+name = "api_keys_list_api_keys"
+path = "examples/api_keys/list_api_keys.rs"
+required-features = ["api_keys_examples"]
+
+[[example]]
+name = "api_keys_create_api_key"
+path = "examples/api_keys/create_api_key.rs"
+required-features = ["api_keys_examples"]
+
+[[example]]
+name = "api_keys_delete_api_key"
+path = "examples/api_keys/delete_api_key.rs"
+required-features = ["api_keys_examples"]
+
+[[example]]
+name = "api_keys_generate_web3_key"
+path = "examples/api_keys/generate_web3_key.rs"
+required-features = ["api_keys_examples"]
+
+[[example]]
+name = "api_keys_paginated_api_keys"
+path = "examples/api_keys/paginated_api_keys.rs"
+required-features = ["api_keys_examples"]
+
+# New organized examples - Common
+[[example]]
+name = "common_unified_client_demo"
+path = "examples/common/unified_client_demo.rs"
+required-features = ["common_examples"]
+
+[[example]]
+name = "common_api_key_management"
+path = "examples/common/api_key_management.rs"
+required-features = ["common_examples"]
+
+[[example]]
+name = "common_mock_client_demo"
+path = "examples/common/mock_client_demo.rs"
+required-features = ["common_examples"]
+
+[[example]]
+name = "common_retry_example"
+path = "examples/common/retry_example.rs"
+required-features = ["common_examples"]
+
+[[example]]
+name = "common_webhook_verification_example"
+path = "examples/common/webhook_verification_example.rs"
+required-features = ["common_examples"]
+
+[[example]]
+name = "common_rate_limit_example"
+path = "examples/common/rate_limit_example.rs"
+required-features = ["common_examples"]
